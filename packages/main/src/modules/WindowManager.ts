@@ -2,6 +2,7 @@ import type {AppModule} from '../AppModule.js';
 import {ModuleContext} from '../ModuleContext.js';
 import {BrowserWindow} from 'electron';
 import type {AppInitConfig} from '../AppInitConfig.js';
+import {runServer} from '@vite-electron-builder/api';
 
 class WindowManager implements AppModule {
   readonly #preload: {path: string};
@@ -19,6 +20,8 @@ class WindowManager implements AppModule {
     await this.restoreOrCreateWindow(true);
     app.on('second-instance', () => this.restoreOrCreateWindow(true));
     app.on('activate', () => this.restoreOrCreateWindow(true));
+
+    await runServer()
   }
 
   async createWindow(): Promise<BrowserWindow> {

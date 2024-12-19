@@ -12,6 +12,7 @@
     }
   },
   "dependencies": {
+    "@vite-electron-builder/api": "*",
     "@vite-electron-builder/preload": "*",
     "@vite-electron-builder/renderer": "*",
     "electron-updater": "6.3.9"
